@@ -1,0 +1,63 @@
+# Dockerfile for BIG-PHISH v2.0.0
+FROM alpine:3.19
+
+LABEL maintainer="Ian Carter Kulani"
+LABEL description="BIG-PHISH - Ultimate Cybersecurity & Phishing Command Center"
+LABEL version="2.0.0"
+
+# Install system dependencies
+RUN apk update && apk add --no-cache \
+    python3 \
+    py3-pip \
+    nmap \
+    nmap-scripts \
+    curl \
+    bind-tools \
+    traceroute \
+    openssh-client \
+    whois \
+    git \
+    build-base \
+    python3-dev \
+    linux-headers \
+    libpcap-dev \
+    iputils \
+    iptables \
+    tcpdump \
+    net-tools \
+    nikto \
+    && ln -sf python3 /usr/bin/python
+
+# Create app directory
+WORKDIR /app
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY bigphish.py .
+COPY .bigphish/ .bigphish/
+
+# Create necessary directories
+RUN mkdir -p .bigphish/payloads .bigphish/workspaces .bigphish/scans \
+    .bigphish/nikto_results .bigphish/whatsapp_session .bigphish/phishing_pages \
+    reports .bigphish/traffic_logs .bigphish/phishing_templates \
+    .bigphish/captured_credentials .bigphish/ssh_keys .bigphish/ssh_logs \
+    .bigphish/time_history .bigphish/wordlists
+
+# Set permissions
+RUN chmod -R 755 /app
+
+# Expose ports
+EXPOSE 8080 8080/tcp
+EXPOSE 22 22/tcp
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/ || exit 1
+
+# Run the application
+CMD ["python3", "bigphish.py"]

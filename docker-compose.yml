@@ -1,0 +1,104 @@
+# docker-compose.yml for BIG-PHISH v2.0.0
+
+version: '3.8'
+
+services:
+  bigphish:
+    build: .
+    container_name: bigphish
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "22:22"
+    volumes:
+      - bigphish_data:/app/.bigphish
+      - bigphish_logs:/app/logs
+      - bigphish_reports:/app/reports
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - BIGPHISH_ENV=production
+      - TZ=UTC
+    networks:
+      - bigphish_network
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  bigphish-web:
+    build: .
+    container_name: bigphish-web
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+    volumes:
+      - bigphish_data:/app/.bigphish
+    environment:
+      - PYTHONUNBUFFERED=1
+      - BIGPHISH_ENV=production
+    depends_on:
+      - bigphish
+    networks:
+      - bigphish_network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: bigphish-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bigphish
+      POSTGRES_USER: bigphish
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-bigphish_secure_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bigphish_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bigphish"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: bigphish-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - bigphish_network
+    command: redis-server --appendonly yes
+
+  nginx:
+    image: nginx:alpine
+    container_name: bigphish-nginx
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - bigphish_data:/app/.bigphish:ro
+    depends_on:
+      - bigphish-web
+    networks:
+      - bigphish_network
+
+networks:
+  bigphish_network:
+    driver: bridge
+
+volumes:
+  bigphish_data:
+  bigphish_logs:
+  bigphish_reports:
+  postgres_data:
+  redis_data:

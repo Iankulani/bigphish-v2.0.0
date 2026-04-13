@@ -1,0 +1,13 @@
+/opt/bigphish/              # Application files
+├── bigphish.py            # Main application
+├── requirements.txt       # Python dependencies
+└── run.bat               # Windows launcher
+
+/var/lib/bigphish/         # Data directory
+├── wordlists/            # Generated wordlists
+├── phishing_templates/   # Phishing templates
+├── captured_credentials/ # Captured data
+└── scans/               # Scan results
+
+/var/log/bigphish/         # Log files
+└── bigphish.log         # Main log

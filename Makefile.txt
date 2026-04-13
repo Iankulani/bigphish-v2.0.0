@@ -1,0 +1,133 @@
+# Makefile for BIG-PHISH v2.0.0
+
+.PHONY: help install uninstall start stop restart status logs clean backup
+
+APP_NAME=bigphish
+APP_DIR=/opt/bigphish
+DATA_DIR=/var/lib/bigphish
+
+# Colors
+GREEN=\033[0;32m
+RED=\033[0;31m
+YELLOW=\033[1;33m
+BLUE=\033[0;34m
+NC=\033[0m
+
+help:
+	@echo "$(BLUE)BIG-PHISH Management Commands$(NC)"
+	@echo ""
+	@echo "  $(GREEN)make install$(NC)    - Install BIG-PHISH"
+	@echo "  $(GREEN)make uninstall$(NC)  - Uninstall BIG-PHISH"
+	@echo "  $(GREEN)make start$(NC)      - Start BIG-PHISH service"
+	@echo "  $(GREEN)make stop$(NC)       - Stop BIG-PHISH service"
+	@echo "  $(GREEN)make restart$(NC)    - Restart BIG-PHISH service"
+	@echo "  $(GREEN)make status$(NC)     - Check service status"
+	@echo "  $(GREEN)make logs$(NC)       - View logs"
+	@echo "  $(GREEN)make clean$(NC)      - Clean temporary files"
+	@echo "  $(GREEN)make backup$(NC)     - Backup data"
+	@echo "  $(GREEN)make update$(NC)     - Update to latest version"
+	@echo "  $(GREEN)make docker-build$(NC) - Build Docker image"
+	@echo "  $(GREEN)make docker-run$(NC)   - Run with Docker"
+
+install:
+	@echo "$(BLUE)[*] Installing BIG-PHISH...$(NC)"
+	@sudo bash install.sh
+
+uninstall:
+	@echo "$(YELLOW)[⚠] This will remove BIG-PHISH completely$(NC)"
+	@read -p "Are you sure? (y/n): " -n 1 -r; \
+	echo; \
+	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
+		sudo systemctl stop bigphish 2>/dev/null || true; \
+		sudo systemctl disable bigphish 2>/dev/null || true; \
+		sudo rm -rf $(APP_DIR); \
+		sudo rm -rf $(DATA_DIR); \
+		sudo rm -f /etc/systemd/system/bigphish.service; \
+		sudo systemctl daemon-reload; \
+		echo "$(GREEN)[+] BIG-PHISH uninstalled$(NC)"; \
+	else \
+		echo "$(RED)[!] Uninstall cancelled$(NC)"; \
+	fi
+
+start:
+	@if [ -f /etc/alpine-release ]; then \
+		sudo rc-service bigphish start; \
+	else \
+		sudo systemctl start bigphish; \
+	fi
+	@echo "$(GREEN)[+] BIG-PHISH started$(NC)"
+
+stop:
+	@if [ -f /etc/alpine-release ]; then \
+		sudo rc-service bigphish stop; \
+	else \
+		sudo systemctl stop bigphish; \
+	fi
+	@echo "$(GREEN)[+] BIG-PHISH stopped$(NC)"
+
+restart:
+	@if [ -f /etc/alpine-release ]; then \
+		sudo rc-service bigphish restart; \
+	else \
+		sudo systemctl restart bigphish; \
+	fi
+	@echo "$(GREEN)[+] BIG-PHISH restarted$(NC)"
+
+status:
+	@if [ -f /etc/alpine-release ]; then \
+		sudo rc-service bigphish status; \
+	else \
+		sudo systemctl status bigphish; \
+	fi
+
+logs:
+	@if [ -f /etc/alpine-release ]; then \
+		tail -f /var/log/bigphish/bigphish.log; \
+	else \
+		journalctl -u bigphish -f; \
+	fi
+
+clean:
+	@echo "$(BLUE)[*] Cleaning temporary files...$(NC)"
+	@sudo rm -rf $(DATA_DIR)/tmp/*
+	@sudo rm -rf $(DATA_DIR)/cache/*
+	@sudo find $(DATA_DIR) -name "*.tmp" -delete
+	@sudo find $(DATA_DIR) -name "*.log" -mtime +30 -delete
+	@echo "$(GREEN)[+] Cleanup complete$(NC)"
+
+backup:
+	@echo "$(BLUE)[*] Creating backup...$(NC)"
+	@BACKUP_DIR="/tmp/bigphish_backup_$$(date +%Y%m%d_%H%M%S)"
+	@mkdir -p $$BACKUP_DIR
+	@sudo cp -r $(DATA_DIR) $$BACKUP_DIR/
+	@sudo cp -r $(APP_DIR)/config $$BACKUP_DIR/
+	@sudo tar -czf $$BACKUP_DIR.tar.gz $$BACKUP_DIR
+	@sudo rm -rf $$BACKUP_DIR
+	@echo "$(GREEN)[+] Backup created: $$BACKUP_DIR.tar.gz$(NC)"
+
+update:
+	@echo "$(BLUE)[*] Updating BIG-PHISH...$(NC)"
+	@cd $(APP_DIR) && sudo git pull
+	@sudo pip3 install -r $(APP_DIR)/requirements.txt --upgrade
+	@sudo systemctl restart bigphish
+	@echo "$(GREEN)[+] Update complete$(NC)"
+
+docker-build:
+	@echo "$(BLUE)[*] Building Docker image...$(NC)"
+	@docker build -t bigphish:latest .
+	@echo "$(GREEN)[+] Docker image built$(NC)"
+
+docker-run:
+	@echo "$(BLUE)[*] Running with Docker...$(NC)"
+	@docker-compose up -d
+	@echo "$(GREEN)[+] BIG-PHISH running on http://localhost:8080$(NC)"
+
+docker-stop:
+	@echo "$(BLUE)[*] Stopping Docker containers...$(NC)"
+	@docker-compose down
+	@echo "$(GREEN)[+] Containers stopped$(NC)"
+
+test:
+	@echo "$(BLUE)[*] Running tests...$(NC)"
+	@python3 -m pytest tests/ -v
+	@echo "$(GREEN)[+] Tests passed$(NC)"
