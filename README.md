@@ -30,7 +30,7 @@ Scenario-based testing environments
 
 This module plays a critical role in addressing the human factor in cybersecurity, which remains one of the most exploited vulnerabilities in modern systems.
 
-🌐 Network Scanning and Analysis Module
+# 🌐 Network Scanning and Analysis Module
 
 Big Phish also includes a powerful Network Scanning Module that enables users to analyze and map network infrastructures. This component is essential for identifying open ports, active devices, potential vulnerabilities, and misconfigured services.
 
@@ -49,25 +49,25 @@ A unique and modern feature of Big Phish is its cross-platform command execution
 
 Supported platforms include:
 
-Telegram
-Discord
-Slack
-Web-based dashboards
-iMessage
+* Telegram
+* Discord
+* Slack
+* Web-based dashboards
+* iMessage
 
 Through secure authentication and encrypted communication channels, users can send commands, trigger scans, monitor activity, and retrieve reports directly from these platforms. This functionality enhances accessibility and enables real-time interaction with the tool, especially in distributed or remote testing environments.
 
-⚙️ Modular Architecture
+# ⚙️ Modular Architecture
 
 Big Phish is built with a modular architecture, allowing users to enable or disable specific components based on their needs. This design ensures flexibility and scalability, making it suitable for a wide range of use cases—from classroom demonstrations to advanced penetration testing labs.
 
 Modules can be extended or customized, enabling developers and researchers to integrate additional functionalities or tailor the platform to specific scenarios.
 
-📊 Reporting and Insights
+# 📊 Reporting and Insights
 
 Understanding data is just as important as collecting it. Big Phish includes a robust reporting engine that transforms raw data into actionable insights. After each simulation or scan, users receive detailed reports that highlight vulnerabilities, user behavior patterns, and recommended mitigation strategies.
 
-Reports can include:
+# Reports can include:
 
 Risk assessments and severity levels
 Visual network maps
@@ -135,3 +135,20 @@ When used responsibly, Big Phish empowers users to think like attackers in order
 # Disclaimer
 
 Big Phish is intended strictly for educational and authorized cybersecurity testing purposes. Unauthorized use against systems without explicit permission is illegal and unethical. Always follow applicable laws and ethical guidelines when using this tool.
+
+# Screenshots
+
+# Screenshot 1
+<img width="500" height="500" alt="Screenshot (1440)" src="https://github.com/user-attachments/assets/c1354f13-2bae-43c9-8fb8-733c8d854b7a" />
+
+# Screenshot 2
+
+<img width="500" height="500" alt="Screenshot (1439)" src="https://github.com/user-attachments/assets/33fecd8f-ac3b-4115-9cff-1231b842e827" />
+
+
+# Screenshot 3
+<img width="500" height="500" alt="Screenshot (1437)" src="https://github.com/user-attachments/assets/478b139d-48a5-437a-bb34-0838b45affb8" />
+
+# Screenshot 4
+<img width="500" height="500" alt="Screenshot (1438)" src="https://github.com/user-attachments/assets/32f34aa0-3580-4247-996d-6fb854b4df3a" />
+
