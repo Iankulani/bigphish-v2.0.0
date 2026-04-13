@@ -139,16 +139,16 @@ Big Phish is intended strictly for educational and authorized cybersecurity test
 # Screenshots
 
 # Screenshot 1
-<img width="500" height="500" alt="Screenshot (1440)" src="https://github.com/user-attachments/assets/c1354f13-2bae-43c9-8fb8-733c8d854b7a" />
+<img width="750" height="750" alt="Screenshot (1440)" src="https://github.com/user-attachments/assets/c1354f13-2bae-43c9-8fb8-733c8d854b7a" />
 
 # Screenshot 2
 
-<img width="500" height="500" alt="Screenshot (1439)" src="https://github.com/user-attachments/assets/33fecd8f-ac3b-4115-9cff-1231b842e827" />
+<img width="750" height="750" alt="Screenshot (1439)" src="https://github.com/user-attachments/assets/33fecd8f-ac3b-4115-9cff-1231b842e827" />
 
 
 # Screenshot 3
-<img width="500" height="500" alt="Screenshot (1437)" src="https://github.com/user-attachments/assets/478b139d-48a5-437a-bb34-0838b45affb8" />
+<img width="750" height="750" alt="Screenshot (1437)" src="https://github.com/user-attachments/assets/478b139d-48a5-437a-bb34-0838b45affb8" />
 
 # Screenshot 4
-<img width="500" height="500" alt="Screenshot (1438)" src="https://github.com/user-attachments/assets/32f34aa0-3580-4247-996d-6fb854b4df3a" />
+<img width="750" height="750" alt="Screenshot (1438)" src="https://github.com/user-attachments/assets/32f34aa0-3580-4247-996d-6fb854b4df3a" />
 
