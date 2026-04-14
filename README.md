@@ -34,20 +34,20 @@ This module plays a critical role in addressing the human factor in cybersecurit
 
 Big Phish also includes a powerful Network Scanning Module that enables users to analyze and map network infrastructures. This component is essential for identifying open ports, active devices, potential vulnerabilities, and misconfigured services.
 
-With this module, users can:
+# With this module, users can:
 
-Perform deep network scans across local and remote systems
-Identify exposed services and outdated protocols
-Detect potential entry points for attackers
-Generate detailed reports on network health and risks
+* Perform deep network scans across local and remote systems
+* Identify exposed services and outdated protocols
+* Detect potential entry points for attackers
+* Generate detailed reports on network health and risks
 
 The scanning engine is optimized for speed and accuracy, making it suitable for both small-scale lab environments and larger enterprise simulations.
 
-📡 Multi-Platform Command Execution System
+# 📡 Multi-Platform Command Execution System
 
 A unique and modern feature of Big Phish is its cross-platform command execution capability, which allows users to interact with the system remotely through popular communication platforms. This feature is designed for convenience, automation, and integration into existing workflows.
 
-Supported platforms include:
+# Supported platforms include:
 
 * Telegram
 * Discord
@@ -76,15 +76,15 @@ Suggested remediation steps
 
 These insights are invaluable for improving security posture and guiding decision-making processes.
 
-🛡️ Ethical Use and Compliance
+# 🛡️ Ethical Use and Compliance
 
 Big Phish is strictly intended for authorized and ethical use only. Users are expected to operate within legal boundaries and obtain proper permissions before conducting any form of testing.
 
-The platform includes built-in safeguards such as:
+# The platform includes built-in safeguards such as:
 
-Access control mechanisms
-Logging and auditing features
-Usage disclaimers and ethical guidelines
+* Access control mechanisms
+* Logging and auditing features
+* Usage disclaimers and ethical guidelines
 
 These measures ensure that the tool is used responsibly and transparently.
 
