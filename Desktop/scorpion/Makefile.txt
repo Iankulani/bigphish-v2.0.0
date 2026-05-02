@@ -1,0 +1,76 @@
+# Makefile for Scorpion-Effect
+
+.PHONY: help install run docker-build docker-up docker-down clean test lint
+
+# Colors
+GREEN := \033[0;32m
+RED := \033[0;31m
+NC := \033[0m
+
+help:
+	@echo "$(GREEN)Scorpion-Effect Commands:$(NC)"
+	@echo "  make install      - Install dependencies"
+	@echo "  make run          - Run application"
+	@echo "  make docker-build - Build Docker image"
+	@echo "  make docker-up    - Start Docker containers"
+	@echo "  make docker-down  - Stop Docker containers"
+	@echo "  make test         - Run tests"
+	@echo "  make lint         - Run linter"
+	@echo "  make clean        - Clean cache files"
+
+install:
+	@echo "$(GREEN)Installing dependencies...$(NC)"
+	python3 -m venv venv
+	. venv/bin/activate && pip install -r requirements.txt
+	chmod +x install.sh
+	./install.sh
+
+run:
+	@echo "$(GREEN)Starting Scorpion-Effect...$(NC)"
+	python3 scorpion_effect.py
+
+docker-build:
+	@echo "$(GREEN)Building Docker image...$(NC)"
+	docker build -t scorpion-effect:latest .
+
+docker-up:
+	@echo "$(GREEN)Starting Docker services...$(NC)"
+	docker-compose up -d
+	@echo "$(GREEN)Services started! Web UI: http://localhost:5000$(NC)"
+
+docker-down:
+	@echo "$(RED)Stopping Docker services...$(NC)"
+	docker-compose down
+
+docker-logs:
+	docker-compose logs -f
+
+test:
+	@echo "$(GREEN)Running tests...$(NC)"
+	pytest tests/ -v --cov=. --cov-report=html
+
+lint:
+	@echo "$(GREEN)Running linter...$(NC)"
+	flake8 scorpion_effect.py --max-line-length=120 --ignore=E501
+	bandit -r scorpion_effect.py
+
+clean:
+	@echo "$(RED)Cleaning cache...$(NC)"
+	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+	find . -type f -name "*.pyc" -delete
+	rm -rf .pytest_cache .coverage htmlcov
+	rm -rf .scorpion-effect/*.db
+
+dev-setup: install
+	@echo "$(GREEN)Setting up development environment...$(NC)"
+	pip install pytest pytest-cov flake8 bandit black
+	pre-commit install
+
+format:
+	@echo "$(GREEN)Formatting code...$(NC)"
+	black scorpion_effect.py
+
+security-scan:
+	@echo "$(GREEN)Running security scan...$(NC)"
+	bandit -r . -f json -o bandit-report.json
+	safety check

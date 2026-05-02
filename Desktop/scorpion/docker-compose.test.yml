@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  scorpion-test:
+    build: .
+    container_name: scorpion-test
+    environment:
+      - TEST_ENV=true
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "5001:5000"
+    command: python3 -m pytest tests/ -v --tb=short
+    volumes:
+      - ./tests:/app/tests:ro
+    networks:
+      - test-net
+
+  tester:
+    image: python:3.11-alpine
+    container_name: scorpion-tester
+    depends_on:
+      - scorpion-test
+    environment:
+      - TEST_HOST=scorpion-test
+    volumes:
+      - ./tests:/tests:ro
+    command: >
+      sh -c "
+        pip install pytest requests &&
+        pytest /tests/integration/ -v --url=http://scorpion-test:5000
+      "
+    networks:
+      - test-net
+
+networks:
+  test-net:
+    driver: bridge
