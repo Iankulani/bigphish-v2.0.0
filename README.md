@@ -23,10 +23,13 @@ Users can design controlled phishing scenarios to test how individuals within an
 
 # Key capabilities include:
 
-Custom phishing templates for email-based simulations
-Behavioral tracking and response analytics
-Awareness training feedback loops
-Scenario-based testing environments
+* Custom phishing templates for email-based simulations
+
+* Behavioral tracking and response analytics
+
+* Awareness training feedback loops
+
+* Scenario-based testing environments
 
 This module plays a critical role in addressing the human factor in cybersecurity, which remains one of the most exploited vulnerabilities in modern systems.
 
@@ -88,7 +91,7 @@ Big Phish is strictly intended for authorized and ethical use only. Users are ex
 
 These measures ensure that the tool is used responsibly and transparently.
 
-🎓 Educational Applications
+# 🎓 Educational Applications
 
 Big Phish is particularly valuable in educational settings, where students and aspiring cybersecurity professionals can gain hands-on experience in a controlled environment. It bridges the gap between theory and practice, allowing learners to experiment with real-world scenarios without causing harm.
 
