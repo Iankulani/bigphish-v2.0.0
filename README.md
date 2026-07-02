@@ -3,6 +3,14 @@
 
 <img width="736" height="624" alt="bigggfishh" src="https://github.com/user-attachments/assets/5da5f987-b9ed-402f-829a-48cb38ed706d" />
 
+[![GitHub stars](https://img.shields.io/github/stars/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/watchers)
+[![GitHub contributors](https://img.shields.io/github/contributors/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/graphs/contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=git)](https://github.com/Iankulani/bigphish-v2.0.0/commits/main)
+[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/Iankulani/bigphish-v2.0.0)
+[![Python](https://img.shields.io/badge/python-3.x-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 Big Phish is a comprehensive cybersecurity testing and simulation platform designed to help security professionals, ethical hackers, researchers, and students understand, evaluate, and strengthen digital defenses in modern computing environments. Built with a focus on ethical use and controlled environments, Big Phish provides a powerful suite of tools that emulate real-world cyberattack techniques for the purpose of education, training, and defensive strategy development.
 
