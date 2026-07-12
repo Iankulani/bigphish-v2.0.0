@@ -144,7 +144,6 @@ Big Phish is more than just a cybersecurity tool—it is a learning platform, a 
 When used responsibly, Big Phish empowers users to think like attackers in order to build stronger defenses. In a world where cyber threats are constantly evolving, tools like Big Phish play a crucial role in preparing the next generation of cybersecurity experts.
 
 # Disclaimer
-
 Big Phish is intended strictly for educational and authorized cybersecurity testing purposes. Unauthorized use against systems without explicit permission is illegal and unethical. Always follow applicable laws and ethical guidelines when using this tool.
 
 # Screenshots
