@@ -1,7 +1,7 @@
 # BIG-PHISH v2.0.0 - Quick Start Guide
 
 
-<img width="736" height="624" alt="bigggfishh" src="https://github.com/user-attachments/assets/5da5f987-b9ed-402f-829a-48cb38ed706d" />
+<img width="360" height="360" alt="bigggfishh" src="https://github.com/user-attachments/assets/5da5f987-b9ed-402f-829a-48cb38ed706d" />
 
 [![GitHub stars](https://img.shields.io/github/stars/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/network)
