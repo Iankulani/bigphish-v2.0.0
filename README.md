@@ -3,6 +3,7 @@
 
 <img width="360" height="360" alt="bigggfishh" src="https://github.com/user-attachments/assets/5da5f987-b9ed-402f-829a-48cb38ed706d" />
 
+<div align="center">
 [![GitHub stars](https://img.shields.io/github/stars/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/network)
 [![GitHub watchers](https://img.shields.io/github/watchers/Iankulani/bigphish-v2.0.0?style=for-the-badge&logo=github)](https://github.com/Iankulani/bigphish-v2.0.0/watchers)
@@ -12,6 +13,7 @@
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-blue?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/Iankulani/bigphish-v2.0.0)
 [![Python](https://img.shields.io/badge/python-3.x-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
+</div>
 Big Phish is a comprehensive cybersecurity testing and simulation platform designed to help security professionals, ethical hackers, researchers, and students understand, evaluate, and strengthen digital defenses in modern computing environments. Built with a focus on ethical use and controlled environments, Big Phish provides a powerful suite of tools that emulate real-world cyberattack techniques for the purpose of education, training, and defensive strategy development.
 
 At its core, Big Phish is not a malicious toolkit, but rather a controlled cybersecurity laboratory—engineered to expose vulnerabilities before bad actors can exploit them. It is intended strictly for authorized testing environments, such as internal networks, penetration testing labs, academic research, and cybersecurity training programs.
