@@ -19,7 +19,6 @@ Big Phish is a comprehensive cybersecurity testing and simulation platform desig
 
 At its core, Big Phish is not a malicious toolkit, but rather a controlled cybersecurity laboratory—engineered to expose vulnerabilities before bad actors can exploit them. It is intended strictly for authorized testing environments, such as internal networks, penetration testing labs, academic research, and cybersecurity training programs.
 
-
 # 🔐 Core Philosophy
 
 Big Phish operates on the principle that the best defense comes from understanding the offense. By simulating real-world attack vectors in a safe and ethical manner, users gain valuable insight into how cyber threats operate, how systems can be compromised, and most importantly, how those threats can be prevented.
